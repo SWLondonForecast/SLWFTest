@@ -12,28 +12,35 @@
       background: linear-gradient(135deg, #0a1428, #1e2a44);
       color: #e2e8f0;
       min-height: 100vh;
+      overflow-x: hidden;
     }
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-    /* Glassmorphism Base */
+    /* Stronger Liquid Glass */
     .glass {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
     }
 
-    header { text-align: center; padding: 2.5rem 0; }
+    .glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    header { text-align: center; padding: 3rem 0 2rem; }
     h1 { 
-      font-size: 2.8rem; 
+      font-size: 3rem; 
       background: linear-gradient(to right, #60a5fa, #a5b4fc); 
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
     }
 
-    /* Status Section - Glass */
+    /* Status */
     .status-section {
       padding: 18px 24px;
       margin: 1.5rem 0;
@@ -74,15 +81,20 @@
     .tab-btn {
       padding: 14px 40px;
       font-size: 1.2rem;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
       color: white;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: 50px;
       cursor: pointer;
       font-weight: 600;
+      transition: all 0.3s;
     }
-    .tab-btn.active { background: rgba(59, 130, 246, 0.8); border-color: #60a5fa; }
+    .tab-btn.active { 
+      background: rgba(59, 130, 246, 0.75); 
+      border-color: #60a5fa; 
+      box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+    }
 
     .places-grid {
       display: grid;
@@ -96,7 +108,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: transform 0.3s ease;
     }
+    .weather-card:hover { transform: translateY(-8px); }
 
     .temp { font-size: 4.5rem; font-weight: 700; line-height: 1; }
     .location { font-size: 1.3rem; margin-top: 8px; opacity: 0.9; }
@@ -108,7 +122,7 @@
       height: 520px;
       border: none;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     }
 
     .last-updated { text-align: center; margin: 25px 0; opacity: 0.7; }
@@ -116,7 +130,7 @@
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container glass">
       <h1>SWLondon Forecast</h1>
       <p>Somerset & London Weather</p>
     </div>
@@ -130,7 +144,7 @@
       Drink plenty of WATER!
     </div>
 
-    <!-- Website Status -->
+    <!-- Status -->
     <div class="status-section glass">
       <h2>🌐 Website Current Status</h2>
       <iframe src="https://swlforecast.betteruptime.com/badge?theme=dark" 
@@ -160,12 +174,12 @@
     <p id="last-updated" class="last-updated">Last updated: just now</p>
   </main>
 
-  <footer style="text-align:center; padding:2rem; opacity:0.6;">
+  <footer style="text-align:center; padding:3rem 0; opacity:0.6;">
     Data from Open-Meteo • Auto-updates every 15 minutes
   </footer>
 
   <script>
-    // (Same script as before - no changes needed)
+    // Same script as before
     const warningsConfig = [
       { type: "yellow", title: "Yellow Warning", desc: "Yellow Warning Enforced In the UK", visible: true },
       { type: "amber", title: "Amber Warning", desc: "Threat to life and Environment", visible: false },
