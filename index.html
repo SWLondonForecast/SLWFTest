@@ -494,6 +494,57 @@
       background: rgba(245, 62, 62, 0.92);
     }
 
+    .warning.maintenance .warning-symbol {
+      color: white;
+      background: rgba(79, 140, 255, 0.92);
+    }
+
+    .warning.heat .warning-symbol {
+      color: #4b3500;
+      background: rgba(255, 205, 65, 0.92);
+    }
+
+    .warning.cold .warning-symbol {
+      color: white;
+      background: rgba(95, 183, 255, 0.92);
+    }
+
+    .warning.outage .warning-symbol {
+      color: white;
+      background: rgba(239, 68, 68, 0.94);
+    }
+
+    .warning.partial .warning-symbol {
+      color: white;
+      background: rgba(245, 158, 11, 0.94);
+    }
+
+    .warning-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .warning-dismiss {
+      flex: 0 0 auto;
+      padding: 9px 14px;
+
+      color: var(--text-secondary);
+      cursor: pointer;
+
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      background: var(--control-bg);
+
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .warning-dismiss:hover {
+      background: var(--control-hover);
+      transform: scale(1.04);
+    }
+
     .warning-copy strong {
       display: block;
       margin-bottom: 3px;
@@ -1362,6 +1413,19 @@
         flex-direction: column;
       }
 
+      .warning {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .warning-copy {
+        min-width: calc(100% - 65px);
+      }
+
+      .warning-dismiss {
+        margin-left: 59px;
+      }
+
       .dismiss-button {
         align-self: flex-end;
       }
@@ -1489,10 +1553,9 @@
     <main>
       <div id="warnings" class="warning-area"></div>
 
-      <section class="heat-notice glass" id="heat-notice" visable=false> 
+      <section class="heat-notice glass" id="heat-notice">
         <div class="heat-notice-left">
           <div class="heat-icon" aria-hidden="true">☀️</div>
-      
 
           <div>
             <h2>Heat safety reminder</h2>
@@ -1754,24 +1817,43 @@
 
     const warningsConfig = [
       {
-        type: "yellow",
-        symbol: "!",
-        title: "Yellow Warning",
-        desc: "Yellow weather warning currently enforced in the UK.",
+        id: "maintenance",
+        type: "maintenance",
+        symbol: "🛠️",
+        title: "Scheduled Maintenance",
+        desc: "Scheduled maintenance is currently taking place. Some services may be temporarily unavailable.",
         visible: true
       },
       {
-        type: "amber",
-        symbol: "!",
-        title: "Amber Warning",
-        desc: "Increased risk to life, travel and the environment.",
+        id: "heat",
+        type: "heat",
+        symbol: "☀️",
+        title: "Heat Warning",
+        desc: "High temperatures are expected. Stay hydrated, wear sunscreen and avoid prolonged exposure.",
+        visible: true
+      },
+      {
+        id: "cold",
+        type: "cold",
+        symbol: "❄️",
+        title: "Cold Weather Warning",
+        desc: "Very low temperatures are expected. Please wrap up warm and take extra care when travelling.",
         visible: false
       },
       {
-        type: "red",
-        symbol: "!",
-        title: "Red Warning",
-        desc: "Dangerous weather with a serious risk to life.",
+        id: "outage",
+        type: "outage",
+        symbol: "●",
+        title: "Service Outage",
+        desc: "One or more services are currently unavailable. Engineers are investigating the issue.",
+        visible: false
+      },
+      {
+        id: "partial",
+        type: "partial",
+        symbol: "●",
+        title: "Partial Service Outage",
+        desc: "Some website features may be unavailable while we restore full service.",
         visible: false
       }
     ];
@@ -2131,7 +2213,22 @@
               <strong>${escapeHTML(warning.title)}</strong>
               <span>${escapeHTML(warning.desc)}</span>
             </div>
+
+            <button
+              type="button"
+              class="warning-dismiss"
+              aria-label="Dismiss ${escapeHTML(warning.title)}"
+            >
+              Dismiss
+            </button>
           `;
+
+          warningElement
+            .querySelector(".warning-dismiss")
+            .addEventListener("click", () => {
+              warningElement.remove();
+              showToast(`${warning.title} dismissed`);
+            });
 
           elements.warnings.appendChild(warningElement);
         });
