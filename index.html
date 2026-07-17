@@ -2143,6 +2143,447 @@
     @media(max-width:900px){.v2-grid,.widget-board{grid-template-columns:repeat(2,minmax(0,1fr))}.earth-shell{grid-template-columns:1fr}.premium-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:580px){.dynamic-island{top:68px}.v2-grid,.widget-board{grid-template-columns:1fr}.memory-grid{grid-template-columns:repeat(4,1fr)}.storm-card{grid-template-columns:1fr}.v2-header{align-items:stretch;flex-direction:column}}
 
+  
+    /* ==========================================================
+       SUMMER EVENTS — independent from all seasonal theme systems
+       ========================================================== */
+    .summer-event-stage {
+      display: none;
+      margin-top: 58px;
+    }
+
+    body.event-summer .summer-event-stage,
+    body.event-worldcup .summer-event-stage,
+    body.event-summerslam .summer-event-stage {
+      display: block;
+    }
+
+    .summer-events-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .event-hero-card {
+      min-height: 290px;
+      padding: 28px;
+      border-radius: var(--radius-large);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .event-hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.48));
+    }
+
+    .event-hero-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .event-kicker {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 999px;
+      background: rgba(0,0,0,.24);
+      color: rgba(255,255,255,.9);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .event-hero-card h3 {
+      color: white;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      text-shadow: 0 4px 25px rgba(0,0,0,.5);
+    }
+
+    .event-hero-card p {
+      max-width: 560px;
+      margin-top: 10px;
+      color: rgba(255,255,255,.82);
+      font-size: .9rem;
+      line-height: 1.55;
+    }
+
+    .world-opening-art {
+      background:
+        radial-gradient(circle at 50% 16%, rgba(255,255,255,.75) 0 3%, transparent 3.5%),
+        repeating-radial-gradient(ellipse at 50% 105%, transparent 0 22px, rgba(255,255,255,.08) 23px 25px),
+        linear-gradient(165deg, rgba(15,96,197,.18), rgba(0,0,0,.28)),
+        linear-gradient(135deg, #07346d, #096bbb 45%, #14a16f 100%);
+    }
+
+    .world-opening-art::before {
+      content: "⚽";
+      position: absolute;
+      right: 8%;
+      top: 14%;
+      font-size: clamp(5rem, 11vw, 9rem);
+      filter: drop-shadow(0 20px 28px rgba(0,0,0,.4));
+      transform: rotate(-12deg);
+      opacity: .94;
+    }
+
+    .summerslam-art {
+      background:
+        linear-gradient(125deg, transparent 0 35%, rgba(255,255,255,.12) 36% 38%, transparent 39% 100%),
+        repeating-linear-gradient(115deg, transparent 0 22px, rgba(255,255,255,.045) 23px 25px),
+        linear-gradient(145deg, #160049, #5420a3 48%, #ff6a00);
+    }
+
+    .summerslam-art::before {
+      content: "★";
+      position: absolute;
+      right: 7%;
+      top: 6%;
+      color: rgba(255,255,255,.9);
+      font-size: clamp(7rem, 14vw, 11rem);
+      transform: rotate(12deg);
+      text-shadow: 0 0 40px rgba(255,122,0,.8);
+    }
+
+    .event-match-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    .match-card {
+      padding: 22px;
+      border-radius: var(--radius-medium);
+    }
+
+    .match-teams {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .team {
+      flex: 1;
+      text-align: center;
+    }
+
+    .team-flag {
+      display: block;
+      font-size: 2.4rem;
+      margin-bottom: 7px;
+    }
+
+    .versus {
+      color: var(--text-muted);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .match-note {
+      margin-top: 15px;
+      color: var(--text-secondary);
+      font-size: .83rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .world-mini-game {
+      grid-column: 1 / -1;
+      padding: 24px;
+      border-radius: var(--radius-large);
+    }
+
+    .penalty-pitch {
+      position: relative;
+      min-height: 245px;
+      margin-top: 17px;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid var(--glass-border);
+      background:
+        linear-gradient(90deg, transparent 49.5%, rgba(255,255,255,.35) 49.5% 50.5%, transparent 50.5%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 70px, transparent 70px 140px),
+        linear-gradient(#168b4b, #075c30);
+    }
+
+    .goal-frame {
+      position: absolute;
+      left: 50%;
+      top: 22px;
+      width: min(72%, 470px);
+      height: 112px;
+      transform: translateX(-50%);
+      border: 6px solid rgba(255,255,255,.92);
+      border-bottom-width: 4px;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 17px, rgba(255,255,255,.18) 18px 19px),
+        repeating-linear-gradient(90deg, transparent 0 22px, rgba(255,255,255,.18) 23px 24px);
+    }
+
+    .keeper {
+      position: absolute;
+      top: 69px;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 2.7rem;
+      transition: left .22s ease;
+    }
+
+    .football {
+      position: absolute;
+      left: 50%;
+      bottom: 25px;
+      transform: translateX(-50%);
+      font-size: 2.5rem;
+      transition: left .42s cubic-bezier(.2,.9,.2,1), bottom .42s cubic-bezier(.2,.9,.2,1), transform .42s ease;
+    }
+
+    .shot-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .event-mode-note {
+      margin-top: 11px;
+      color: var(--text-muted);
+      font-size: .76rem;
+      line-height: 1.45;
+    }
+
+    /* Summer mode */
+    body.event-summer {
+      --page-bg:
+        radial-gradient(circle at 15% 8%, rgba(255,228,90,.5), transparent 28%),
+        radial-gradient(circle at 84% 16%, rgba(75,224,255,.42), transparent 31%),
+        linear-gradient(150deg, #085ea8, #13a7cb 48%, #ffd15e);
+      --accent: #ffe16a;
+      --accent-strong: #fff0a5;
+      --glass-glow: rgba(255,217,76,.24);
+    }
+
+    body.event-summer .brand-icon::before { content: "☀️"; }
+    body.event-summer .brand-icon { font-size: 0; }
+    body.event-summer .brand-icon::before { font-size: 1.35rem; }
+
+    /* World football event mode — original event artwork, no official marks */
+    body.event-worldcup {
+      --page-bg:
+        radial-gradient(circle at 18% 10%, rgba(68,196,255,.42), transparent 30%),
+        radial-gradient(circle at 83% 18%, rgba(45,215,117,.34), transparent 30%),
+        linear-gradient(155deg, #031d45, #075b98 48%, #076b42);
+      --accent: #6effb0;
+      --accent-strong: #b4ffd5;
+      --glass-glow: rgba(44,215,123,.24);
+    }
+
+    body.event-worldcup .brand-icon::before { content: "⚽"; }
+    body.event-worldcup .brand-icon { font-size: 0; }
+    body.event-worldcup .brand-icon::before { font-size: 1.35rem; }
+
+    body.event-worldcup .hero-title-gradient {
+      background: linear-gradient(90deg, #fff, #89ffc1, #69c6ff, #fff);
+      background-size: 180% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    /* Summer wrestling event mode — inspired visual, not an official logo */
+    body.event-summerslam {
+      --page-bg:
+        radial-gradient(circle at 18% 12%, rgba(255,106,0,.42), transparent 30%),
+        radial-gradient(circle at 82% 18%, rgba(122,74,255,.42), transparent 31%),
+        linear-gradient(150deg, #090018, #2b075d 50%, #9c2d00);
+      --accent: #ff9d42;
+      --accent-strong: #ffd0a1;
+      --glass-glow: rgba(255,103,25,.28);
+    }
+
+    body.event-summerslam .brand-icon::before { content: "★"; }
+    body.event-summerslam .brand-icon { font-size: 0; }
+    body.event-summerslam .brand-icon::before { font-size: 1.35rem; }
+
+    body.event-summerslam .hero-title-gradient {
+      background: linear-gradient(90deg, #fff, #ffb55f, #bd92ff, #fff);
+      background-size: 180% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    body.event-summerslam .glass {
+      border-color: rgba(255,157,66,.3);
+    }
+
+    body.ultra-performance .event-hero-card::before,
+    body.performance-mode .event-hero-card::before {
+      display: none;
+    }
+
+    @media (max-width: 850px) {
+      .summer-events-grid,
+      .event-match-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  
+    /* Extra Summer Event mini games */
+    .event-games-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .event-mini-game {
+      padding: 24px;
+      border-radius: var(--radius-large);
+    }
+
+    .target-board {
+      position: relative;
+      min-height: 270px;
+      margin-top: 17px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      background:
+        linear-gradient(rgba(255,255,255,.08), rgba(255,255,255,.02)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 70px, transparent 70px 140px),
+        linear-gradient(#14884a, #07552e);
+    }
+
+    .football-target {
+      position: absolute;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border: 3px solid rgba(255,255,255,.9);
+      border-radius: 50%;
+      color: white;
+      font-weight: 900;
+      background: rgba(0,0,0,.24);
+      box-shadow: 0 8px 22px rgba(0,0,0,.25);
+      cursor: pointer;
+      transition: transform .18s ease;
+    }
+
+    .football-target:hover {
+      transform: scale(1.08);
+    }
+
+    .football-target.hit {
+      transform: scale(.2);
+      opacity: 0;
+    }
+
+    .wrestling-ring {
+      position: relative;
+      min-height: 270px;
+      margin-top: 17px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(82,24,150,.78), rgba(25,2,58,.94));
+    }
+
+    .ring-mat {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      bottom: 34px;
+      height: 118px;
+      border: 5px solid rgba(255,255,255,.86);
+      background: linear-gradient(145deg, rgba(255,255,255,.22), rgba(255,123,0,.16));
+      box-shadow: inset 0 0 40px rgba(0,0,0,.28);
+    }
+
+    .ring-rope {
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      height: 4px;
+      border-radius: 999px;
+      background: #ff8b2c;
+      box-shadow: 0 0 12px rgba(255,116,24,.65);
+    }
+
+    .ring-rope.one { bottom: 70px; }
+    .ring-rope.two { bottom: 112px; }
+    .ring-rope.three { bottom: 154px; }
+
+    .wrestler-player,
+    .wrestler-rival {
+      position: absolute;
+      bottom: 76px;
+      font-size: 3.6rem;
+      transition: left .25s ease, right .25s ease, transform .25s ease;
+      filter: drop-shadow(0 10px 12px rgba(0,0,0,.35));
+    }
+
+    .wrestler-player { left: 21%; }
+    .wrestler-rival { right: 21%; }
+
+    .wrestling-meter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .meter-box {
+      padding: 11px;
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      background: var(--control-bg);
+    }
+
+    .meter-track {
+      height: 9px;
+      margin-top: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: 100%;
+      border-radius: inherit;
+      background: var(--accent);
+      transition: width .25s ease;
+    }
+
+    .game-countdown {
+      color: var(--accent-strong);
+      font-weight: 800;
+    }
+
+    @media (max-width: 850px) {
+      .event-games-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -2359,6 +2800,134 @@
             <button class="map-tab" type="button" data-map="clouds">☁️ Clouds</button>
           </div>
           <iframe class="map-frame" id="weather-map-frame" src="https://www.rainviewer.com/map.html?loc=51.5,-0.1,7" title="Interactive weather map" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </section>
+
+
+      <section class="summer-event-stage" id="summer-events-section">
+        <div class="embed-header">
+          <div>
+            <div class="section-label">Special experiences</div>
+            <div class="title-with-badge">
+              <h2>Summer Events</h2>
+              <span class="beta-badge">New</span>
+            </div>
+          </div>
+          <span class="external-label" id="summer-event-status">Choose a theme in Settings</span>
+        </div>
+
+        <div class="summer-events-grid">
+          <article class="event-hero-card world-opening-art glass" id="world-event-card">
+            <span class="event-kicker">World football opening</span>
+            <div>
+              <h3>One World.<br>One Summer.</h3>
+              <p>An original stadium-opening visual for the football theme, with match features and a penalty challenge.</p>
+            </div>
+          </article>
+
+          <article class="event-hero-card summerslam-art glass" id="slam-event-card">
+            <span class="event-kicker">Summer wrestling spectacular</span>
+            <div>
+              <h3>Summer<br>Showdown</h3>
+              <p>An original wrestling-event thumbnail inspired by huge summer arena shows, without using an official logo.</p>
+            </div>
+          </article>
+
+          <div class="event-match-grid" id="summer-match-cards">
+            <article class="match-card glass">
+              <div class="section-label">Featured fixture</div>
+              <div class="match-teams">
+                <div class="team"><span class="team-flag">🇪🇸</span><strong>Spain</strong></div>
+                <span class="versus">VS</span>
+                <div class="team"><span class="team-flag">🇦🇷</span><strong>Argentina</strong></div>
+              </div>
+              <p class="match-note">A technical battle between two possession-focused football nations.</p>
+            </article>
+
+            <article class="match-card glass">
+              <div class="section-label">Featured fixture</div>
+              <div class="match-teams">
+                <div class="team"><span class="team-flag">🏴</span><strong>England</strong></div>
+                <span class="versus">VS</span>
+                <div class="team"><span class="team-flag">🇫🇷</span><strong>France</strong></div>
+              </div>
+              <p class="match-note">A major European contest with pace, pressure and a huge-match atmosphere.</p>
+            </article>
+          </div>
+
+
+          <div class="event-games-grid" id="extra-summer-games">
+            <article class="event-mini-game glass" id="football-target-game">
+              <div class="section-label">Football mini game 2</div>
+              <h3 style="margin-top:6px;">Target Practice</h3>
+              <p class="premium-sub">Hit as many moving targets as possible before the timer reaches zero.</p>
+
+              <div class="target-board" id="target-board" aria-live="polite">
+                <button type="button" class="football-target" id="football-target" aria-label="Football target">⚽</button>
+              </div>
+
+              <div class="shot-controls">
+                <button type="button" class="glass-action" id="start-target-game">Start game</button>
+              </div>
+
+              <p class="event-mode-note">
+                Score: <strong id="target-score">0</strong>
+                · Time: <strong class="game-countdown" id="target-time">20</strong>s
+              </p>
+            </article>
+
+            <article class="event-mini-game glass" id="wrestling-mini-game">
+              <div class="section-label">Wrestling mini game</div>
+              <h3 style="margin-top:6px;">Summer Showdown</h3>
+              <p class="premium-sub">Choose attacks, protect your energy and defeat your rival before they defeat you.</p>
+
+              <div class="wrestling-ring" aria-live="polite">
+                <div class="ring-mat"></div>
+                <div class="ring-rope one"></div>
+                <div class="ring-rope two"></div>
+                <div class="ring-rope three"></div>
+                <div class="wrestler-player" id="wrestler-player">🤼</div>
+                <div class="wrestler-rival" id="wrestler-rival">🥊</div>
+              </div>
+
+              <div class="wrestling-meter">
+                <div class="meter-box">
+                  <strong>You</strong>
+                  <div class="meter-track"><div class="meter-fill" id="player-health"></div></div>
+                </div>
+                <div class="meter-box">
+                  <strong>Rival</strong>
+                  <div class="meter-track"><div class="meter-fill" id="rival-health"></div></div>
+                </div>
+              </div>
+
+              <div class="shot-controls">
+                <button type="button" class="glass-action wrestling-move" data-move="strike">Strike</button>
+                <button type="button" class="glass-action wrestling-move" data-move="grapple">Grapple</button>
+                <button type="button" class="glass-action wrestling-move" data-move="block">Block</button>
+                <button type="button" class="glass-action" id="reset-wrestling-game">Restart</button>
+              </div>
+
+              <p class="event-mode-note" id="wrestling-result">Choose your first move.</p>
+            </article>
+          </div>
+
+          <article class="world-mini-game glass" id="world-cup-mini-game">
+            <div class="section-label">World football mini game</div>
+            <h3 style="margin-top:6px;">Penalty Challenge</h3>
+            <p class="premium-sub">Choose a corner. Score past the goalkeeper to earn a point.</p>
+            <div class="penalty-pitch" aria-live="polite">
+              <div class="goal-frame"></div>
+              <div class="keeper" id="summer-keeper">🧤</div>
+              <div class="football" id="summer-football">⚽</div>
+            </div>
+            <div class="shot-controls">
+              <button type="button" class="glass-action summer-shot" data-shot="left">Shoot left</button>
+              <button type="button" class="glass-action summer-shot" data-shot="centre">Shoot centre</button>
+              <button type="button" class="glass-action summer-shot" data-shot="right">Shoot right</button>
+            </div>
+            <p class="event-mode-note" id="summer-game-result">Score: 0 · Shots: 0</p>
+          </article>
         </div>
       </section>
 
@@ -2773,6 +3342,48 @@
       <div class="setting-note">Ultra Performance is designed for older phones and computers. Maps remain available after switching back to Standard mode.</div>
     </div>
 
+
+
+    <div class="settings-group" id="summer-events-settings">
+      <div class="settings-group-title">Summer events</div>
+
+      <label class="setting-row">
+        <span class="setting-copy">
+          <strong>Summer Theme</strong>
+          <span>Bright sunshine, blue skies and warm golden glass.</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" id="summer-theme-setting">
+          <span class="switch-track"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span class="setting-copy">
+          <strong>World Football Theme</strong>
+          <span>Stadium-style background, featured fixtures and penalty game.</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" id="world-cup-theme-setting">
+          <span class="switch-track"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span class="setting-copy">
+          <strong>Summer Wrestling Theme</strong>
+          <span>Orange, purple and arena-style summer-show visuals.</span>
+        </span>
+        <span class="switch">
+          <input type="checkbox" id="summerslam-theme-setting">
+          <span class="switch-track"></span>
+        </span>
+      </label>
+
+      <div class="setting-note">
+        Only one Summer Event theme can be active at a time. These switches do not add or change any autumn, Halloween or Christmas settings.
+      </div>
+    </div>
 
     <button
       type="button"
@@ -3694,51 +4305,6 @@ function applyTheme() {
       if (adviceElement) adviceElement.textContent = advice;
     }
 
-
-    const GLANCE_SNAPSHOT_KEY = "swLondonInstantGlance";
-    const GLANCE_IDS = ["summary", "health", "travel", "school", "garden", "uk-overview"];
-
-    function saveGlanceSnapshot() {
-      try {
-        const cards = {};
-        GLANCE_IDS.forEach(id => {
-          cards[id] = {
-            value: document.getElementById(`${id}-value`)?.textContent || "",
-            advice: document.getElementById(`${id}-advice`)?.textContent || ""
-          };
-        });
-        localStorage.setItem(GLANCE_SNAPSHOT_KEY, JSON.stringify({
-          savedAt: Date.now(),
-          cards,
-          uv: document.getElementById("uv-value")?.textContent || "",
-          uvAdvice: document.getElementById("uv-advice")?.textContent || "",
-          moon: document.getElementById("moon-info")?.textContent || ""
-        }));
-      } catch (error) {
-        console.warn("Could not save instant glance:", error);
-      }
-    }
-
-    function restoreGlanceSnapshot() {
-      try {
-        const snapshot = JSON.parse(localStorage.getItem(GLANCE_SNAPSHOT_KEY) || "null");
-        if (!snapshot?.cards) return false;
-        GLANCE_IDS.forEach(id => {
-          const card = snapshot.cards[id];
-          if (card?.value || card?.advice) setInsight(id, card.value || "—", card.advice || "Updating quietly in the background…");
-        });
-        if (snapshot.uv) document.getElementById("uv-value").textContent = snapshot.uv;
-        if (snapshot.uvAdvice) document.getElementById("uv-advice").textContent = snapshot.uvAdvice;
-        if (snapshot.moon) document.getElementById("moon-info").textContent = snapshot.moon;
-        const ageMinutes = Math.max(0, Math.round((Date.now() - Number(snapshot.savedAt || Date.now())) / 60000));
-        const status = document.getElementById("smart-glance-updated");
-        if (status) status.textContent = ageMinutes < 1 ? "Showing saved insights · refreshing now" : `Showing saved insights from ${ageMinutes} min ago · refreshing now`;
-        return true;
-      } catch (error) {
-        return false;
-      }
-    }
-
     function buildLocalInsights(place, weather) {
       const daily = weather.daily || {};
       const hourly = weather.hourly || {};
@@ -3789,7 +4355,6 @@ function applyTheme() {
       renderCalendar(daily);
       renderStatistics(daily, hourly);
       applyLiveWeatherExperience(weather);
-      saveGlanceSnapshot();
     }
 
     const UK_OVERVIEW_CACHE_MS = 30 * 60 * 1000;
@@ -3797,7 +4362,7 @@ function applyTheme() {
     let ukOverviewCacheTime = 0;
     let ukOverviewRequest = null;
 
-    async function fetchWithTimeout(url, timeoutMs = 2200) {
+    async function fetchWithTimeout(url, timeoutMs = 6500) {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), timeoutMs);
       try {
@@ -3853,10 +4418,7 @@ function applyTheme() {
       const refreshButton = document.getElementById("refresh-smart-glance");
       if (refreshButton) { refreshButton.disabled = true; refreshButton.textContent = "Updating…"; }
       try {
-        const existingOverview = document.getElementById("uk-overview-advice")?.textContent || "";
-        if (!existingOverview || existingOverview.includes("Checking conditions") || existingOverview.includes("Loading the latest")) {
-          setInsight("uk-overview", "UK", "Refreshing the UK overview quietly in the background…");
-        }
+        setInsight("uk-overview", "UK", "Loading the latest UK-wide overview in the background…");
         const regions = await fetchUKOverview(showConfirmation);
         const warmest = regions.reduce((a, b) => b.high > a.high ? b : a);
         const coolest = regions.reduce((a, b) => b.low < a.low ? b : a);
@@ -3869,15 +4431,11 @@ function applyTheme() {
         const updated = new Date();
         const stamp = updated.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
         document.getElementById("smart-glance-updated").textContent = `Auto-updated at ${stamp} · Refreshes every 30 minutes`;
-        saveGlanceSnapshot();
         if (showConfirmation) showToast("Smart UK insights updated");
       } catch (error) {
         console.error("Could not update UK smart insights:", error);
-        const currentAdvice = document.getElementById("uk-overview-advice")?.textContent || "";
-        if (!currentAdvice || currentAdvice.includes("Checking conditions") || currentAdvice.includes("Refreshing the UK")) {
-          setInsight("uk-overview", "UK", "Your local insights are ready. The UK overview will retry automatically.");
-        }
-        document.getElementById("smart-glance-updated").textContent = "Local insights ready · UK overview will retry";
+        setInsight("uk-overview", "UK", "The UK-wide overview is temporarily unavailable, but your local guidance remains current.");
+        document.getElementById("smart-glance-updated").textContent = "Local insights updated · UK overview unavailable";
       } finally {
         smartGlanceBusy = false;
         if (refreshButton) { refreshButton.disabled = false; refreshButton.textContent = "↻ Refresh insights"; }
@@ -4537,13 +5095,307 @@ function applyTheme() {
     applyV2();
 
 
+
+    /* ===== Summer Events runtime ===== */
+    const summerEventDefaults = {
+      summerTheme: false,
+      worldCupTheme: false,
+      summerSlamTheme: false
+    };
+
+    let summerEventSettings = (() => {
+      try {
+        return {
+          ...summerEventDefaults,
+          ...JSON.parse(localStorage.getItem("swLondonSummerEvents") || "{}")
+        };
+      } catch {
+        return { ...summerEventDefaults };
+      }
+    })();
+
+    function saveSummerEvents() {
+      localStorage.setItem("swLondonSummerEvents", JSON.stringify(summerEventSettings));
+    }
+
+    function setExclusiveSummerEvent(selectedKey, enabled) {
+      Object.keys(summerEventSettings).forEach(key => {
+        summerEventSettings[key] = key === selectedKey ? enabled : false;
+      });
+      saveSummerEvents();
+      applySummerEvents();
+
+
+    /* ===== Additional Summer Event mini games ===== */
+
+    const targetBoard = document.getElementById("target-board");
+    const footballTarget = document.getElementById("football-target");
+    const targetScoreLabel = document.getElementById("target-score");
+    const targetTimeLabel = document.getElementById("target-time");
+    const startTargetGameButton = document.getElementById("start-target-game");
+
+    let targetGameScore = 0;
+    let targetGameTime = 20;
+    let targetGameTimer = null;
+    let targetGameActive = false;
+
+    function moveFootballTarget() {
+      if (!targetBoard || !footballTarget) return;
+
+      const boardWidth = Math.max(targetBoard.clientWidth - 75, 20);
+      const boardHeight = Math.max(targetBoard.clientHeight - 75, 20);
+
+      footballTarget.style.left = `${Math.random() * boardWidth}px`;
+      footballTarget.style.top = `${Math.random() * boardHeight}px`;
+    }
+
+    function finishTargetGame() {
+      targetGameActive = false;
+      clearInterval(targetGameTimer);
+      targetGameTimer = null;
+      startTargetGameButton.disabled = false;
+      startTargetGameButton.textContent = "Play again";
+      footballTarget.style.display = "none";
+      showToast(`Target Practice finished — ${targetGameScore} points`);
+    }
+
+    startTargetGameButton?.addEventListener("click", () => {
+      clearInterval(targetGameTimer);
+      targetGameScore = 0;
+      targetGameTime = 20;
+      targetGameActive = true;
+
+      targetScoreLabel.textContent = "0";
+      targetTimeLabel.textContent = "20";
+      footballTarget.style.display = "grid";
+      footballTarget.classList.remove("hit");
+      startTargetGameButton.disabled = true;
+      startTargetGameButton.textContent = "Game running";
+
+      moveFootballTarget();
+
+      targetGameTimer = setInterval(() => {
+        targetGameTime -= 1;
+        targetTimeLabel.textContent = String(targetGameTime);
+
+        if (targetGameTime <= 0) {
+          finishTargetGame();
+        }
+      }, 1000);
+    });
+
+    footballTarget?.addEventListener("click", () => {
+      if (!targetGameActive) return;
+
+      targetGameScore += 1;
+      targetScoreLabel.textContent = String(targetGameScore);
+      footballTarget.classList.add("hit");
+
+      setTimeout(() => {
+        footballTarget.classList.remove("hit");
+        moveFootballTarget();
+      }, 120);
+    });
+
+    let playerHealthValue = 100;
+    let rivalHealthValue = 100;
+    let wrestlingGameOver = false;
+    let playerBlocking = false;
+
+    const playerHealthBar = document.getElementById("player-health");
+    const rivalHealthBar = document.getElementById("rival-health");
+    const wrestlingResult = document.getElementById("wrestling-result");
+    const wrestlerPlayer = document.getElementById("wrestler-player");
+    const wrestlerRival = document.getElementById("wrestler-rival");
+
+    function updateWrestlingGame() {
+      playerHealthBar.style.width = `${Math.max(playerHealthValue, 0)}%`;
+      rivalHealthBar.style.width = `${Math.max(rivalHealthValue, 0)}%`;
+
+      if (rivalHealthValue <= 0) {
+        wrestlingGameOver = true;
+        wrestlingResult.textContent = "You win the Summer Showdown! 🏆";
+        showToast("You won the wrestling mini game");
+      } else if (playerHealthValue <= 0) {
+        wrestlingGameOver = true;
+        wrestlingResult.textContent = "Your rival wins. Press Restart for another match.";
+      }
+    }
+
+    function animateWrestlingMove(attacker, direction) {
+      attacker.style.transform = `translateX(${direction}px) scale(1.12)`;
+      setTimeout(() => {
+        attacker.style.transform = "translateX(0) scale(1)";
+      }, 230);
+    }
+
+    document.querySelectorAll(".wrestling-move").forEach(button => {
+      button.addEventListener("click", () => {
+        if (wrestlingGameOver) return;
+
+        const move = button.dataset.move;
+        playerBlocking = move === "block";
+
+        let playerDamage = 0;
+        let moveText = "";
+
+        if (move === "strike") {
+          playerDamage = 10 + Math.floor(Math.random() * 11);
+          moveText = `You landed a strike for ${playerDamage} damage.`;
+          animateWrestlingMove(wrestlerPlayer, 38);
+        } else if (move === "grapple") {
+          const successful = Math.random() > 0.35;
+          playerDamage = successful ? 17 + Math.floor(Math.random() * 12) : 0;
+          moveText = successful
+            ? `Successful grapple! ${playerDamage} damage.`
+            : "The rival escaped your grapple.";
+          animateWrestlingMove(wrestlerPlayer, 52);
+        } else {
+          moveText = "You prepared to block the rival's attack.";
+        }
+
+        rivalHealthValue -= playerDamage;
+
+        if (rivalHealthValue <= 0) {
+          wrestlingResult.textContent = moveText;
+          updateWrestlingGame();
+          return;
+        }
+
+        setTimeout(() => {
+          let rivalDamage = 8 + Math.floor(Math.random() * 13);
+
+          if (playerBlocking) {
+            rivalDamage = Math.floor(rivalDamage * 0.3);
+          }
+
+          playerHealthValue -= rivalDamage;
+          animateWrestlingMove(wrestlerRival, -38);
+
+          wrestlingResult.textContent =
+            `${moveText} Rival answered for ${rivalDamage} damage${playerBlocking ? " through your block" : ""}.`;
+
+          playerBlocking = false;
+          updateWrestlingGame();
+        }, 280);
+
+        updateWrestlingGame();
+      });
+    });
+
+    document.getElementById("reset-wrestling-game")?.addEventListener("click", () => {
+      playerHealthValue = 100;
+      rivalHealthValue = 100;
+      wrestlingGameOver = false;
+      playerBlocking = false;
+      wrestlingResult.textContent = "Choose your first move.";
+      updateWrestlingGame();
+    });
+
+    updateWrestlingGame();
+
+    }
+
+    function applySummerEvents() {
+      document.body.classList.toggle("event-summer", summerEventSettings.summerTheme);
+      document.body.classList.toggle("event-worldcup", summerEventSettings.worldCupTheme);
+      document.body.classList.toggle("event-summerslam", summerEventSettings.summerSlamTheme);
+
+      const summerControl = document.getElementById("summer-theme-setting");
+      const worldControl = document.getElementById("world-cup-theme-setting");
+      const slamControl = document.getElementById("summerslam-theme-setting");
+
+      if (summerControl) summerControl.checked = summerEventSettings.summerTheme;
+      if (worldControl) worldControl.checked = summerEventSettings.worldCupTheme;
+      if (slamControl) slamControl.checked = summerEventSettings.summerSlamTheme;
+
+      const active =
+        summerEventSettings.worldCupTheme ? "World Football theme active" :
+        summerEventSettings.summerSlamTheme ? "Summer Wrestling theme active" :
+        summerEventSettings.summerTheme ? "Summer theme active" :
+        "Choose a theme in Settings";
+
+      const status = document.getElementById("summer-event-status");
+      if (status) status.textContent = active;
+
+      const worldCard = document.getElementById("world-event-card");
+      const slamCard = document.getElementById("slam-event-card");
+      const matches = document.getElementById("summer-match-cards");
+      const miniGame = document.getElementById("world-cup-mini-game");
+      const footballTargetGame = document.getElementById("football-target-game");
+      const wrestlingMiniGame = document.getElementById("wrestling-mini-game");
+
+      if (worldCard) worldCard.style.display = summerEventSettings.summerSlamTheme ? "none" : "";
+      if (slamCard) slamCard.style.display = summerEventSettings.worldCupTheme ? "none" : "";
+      if (matches) matches.style.display = summerEventSettings.worldCupTheme ? "grid" : "none";
+      if (miniGame) miniGame.style.display = summerEventSettings.worldCupTheme ? "block" : "none";
+      if (footballTargetGame) footballTargetGame.style.display = summerEventSettings.worldCupTheme ? "block" : "none";
+      if (wrestlingMiniGame) wrestlingMiniGame.style.display = summerEventSettings.summerSlamTheme ? "block" : "none";
+    }
+
+    document.getElementById("summer-theme-setting")?.addEventListener("change", event => {
+      setExclusiveSummerEvent("summerTheme", event.target.checked);
+      showToast(event.target.checked ? "Summer Theme enabled" : "Summer Theme disabled");
+    });
+
+    document.getElementById("world-cup-theme-setting")?.addEventListener("change", event => {
+      setExclusiveSummerEvent("worldCupTheme", event.target.checked);
+      showToast(event.target.checked ? "World Football Theme enabled" : "World Football Theme disabled");
+    });
+
+    document.getElementById("summerslam-theme-setting")?.addEventListener("change", event => {
+      setExclusiveSummerEvent("summerSlamTheme", event.target.checked);
+      showToast(event.target.checked ? "Summer Wrestling Theme enabled" : "Summer Wrestling Theme disabled");
+    });
+
+    let summerGameScore = 0;
+    let summerGameShots = 0;
+    let summerGameLocked = false;
+
+    document.querySelectorAll(".summer-shot").forEach(button => {
+      button.addEventListener("click", () => {
+        if (summerGameLocked) return;
+        summerGameLocked = true;
+
+        const zones = { left: "25%", centre: "50%", right: "75%" };
+        const shot = button.dataset.shot;
+        const keeperChoice = ["left", "centre", "right"][Math.floor(Math.random() * 3)];
+        const football = document.getElementById("summer-football");
+        const keeper = document.getElementById("summer-keeper");
+        const result = document.getElementById("summer-game-result");
+
+        summerGameShots += 1;
+        keeper.style.left = zones[keeperChoice];
+        football.style.left = zones[shot];
+        football.style.bottom = "125px";
+        football.style.transform = "translateX(-50%) scale(.72) rotate(320deg)";
+
+        const goal = shot !== keeperChoice;
+        if (goal) summerGameScore += 1;
+
+        setTimeout(() => {
+          result.textContent = `${goal ? "GOAL! ⚽" : "Saved! 🧤"} · Score: ${summerGameScore} · Shots: ${summerGameShots}`;
+        }, 330);
+
+        setTimeout(() => {
+          football.style.left = "50%";
+          football.style.bottom = "25px";
+          football.style.transform = "translateX(-50%) scale(1) rotate(0deg)";
+          keeper.style.left = "50%";
+          summerGameLocked = false;
+        }, 1100);
+      });
+    });
+
+    applySummerEvents();
+
+
     /*
       ------------------------------------------------------------
       INITIAL PAGE LOAD
       ------------------------------------------------------------
     */
 
-    restoreGlanceSnapshot();
     updateTimeGlow();
     updateScrollShimmer();
     setupFavourites();
